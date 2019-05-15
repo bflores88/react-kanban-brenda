@@ -7,18 +7,27 @@ const bodyParser = require('body-parser');
 // const bcrypt = require('bcryptjs');
 
 const users = require('./routes/users.js')
+const Card = require('./database/models/Card');
 
-const PORT = 3000;
 
 require('dotenv').config();
 
+const PORT = process.env.EXPRESS_CONTAINER_PORT;
+
 const app = express();
-app.use(express.static('public'));
 
-app.use('/users', users);
+app.use('/api/users', users);
 
-app.get('/', (req, res) => {
-  return res.send('mehhhhhh');
+app.get('/api', (req, res) => {
+  new Card()
+      .fetchAll()
+      .then((results) => {
+
+        return res.send(results.toJSON())
+      })
+      .catch((err) => {
+      console.log('err', err)
+    })
 })
 
 
