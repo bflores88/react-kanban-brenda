@@ -10,7 +10,7 @@ class Status extends bookshelf.Model {
   }
 
   cards () {
-    return this.hasMany('Cards', 'status_id');
+    return this.hasMany('Card');
   }
 
 }

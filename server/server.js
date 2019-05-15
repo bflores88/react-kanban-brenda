@@ -6,8 +6,15 @@ const bodyParser = require('body-parser');
 // const LocalStrategy = require('passport-local');
 // const bcrypt = require('bcryptjs');
 
+const cards = require('./routes/cards.js')
 const users = require('./routes/users.js')
+const priorities = require('./routes/priorities.js')
+const statuses = require('./routes/statuses.js')
+
 const Card = require('./database/models/Card');
+const User = require('./database/models/User');
+const Priority = require('./database/models/Priority');
+const Status = require('./database/models/Status');
 
 
 require('dotenv').config();
@@ -16,18 +23,13 @@ const PORT = process.env.EXPRESS_CONTAINER_PORT;
 
 const app = express();
 
+app.use('/api/cards', cards);
 app.use('/api/users', users);
+app.use('/api/priorities', priorities);
+app.use('/api/statuses', statuses);
 
 app.get('/api', (req, res) => {
-  new Card()
-      .fetchAll()
-      .then((results) => {
-
-        return res.send(results.toJSON())
-      })
-      .catch((err) => {
-      console.log('err', err)
-    })
+  
 })
 
 

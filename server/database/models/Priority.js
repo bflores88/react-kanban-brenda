@@ -10,7 +10,7 @@ class Priority extends bookshelf.Model {
   }
 
   cards () {
-    return this.hasMany('Cards', 'priority_id');
+    return this.hasMany('Card');
   }
 
 }
