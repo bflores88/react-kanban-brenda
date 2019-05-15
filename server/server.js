@@ -29,7 +29,7 @@ app.use('/api/priorities', priorities);
 app.use('/api/statuses', statuses);
 
 app.get('/api', (req, res) => {
-  
+  return res.send('{message: smoke test}')
 })
 
 
