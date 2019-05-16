@@ -5,10 +5,12 @@ const Card = require('../database/models/Card');
 router.route('/')
   .get((req, res) => {
     Card
+    .forge()
+    .orderBy('status_id', 'ASC')
     .fetchAll({withRelated: ['priorities', 'statuses', 'created_by', 'assigned_to']})
     .then((results) => {
-      console.log(results);
-      return res.send(results)
+      let cardArray = results.toJSON();
+      return res.json(cardArray);
     })
     .catch((err) => {
     console.log('err', err)
@@ -76,6 +78,6 @@ router.route('/:id/edit')
 router.route('/:id/delete')
   .get((req, res) => {
     res.send('Form to delete cards')
-})
+  })
 
 module.exports = router;

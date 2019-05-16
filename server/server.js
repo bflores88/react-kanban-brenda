@@ -23,6 +23,8 @@ const PORT = process.env.EXPRESS_CONTAINER_PORT;
 
 const app = express();
 
+app.use(bodyParser.json());
+
 app.use('/api/cards', cards);
 app.use('/api/users', users);
 app.use('/api/priorities', priorities);
