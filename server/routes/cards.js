@@ -6,7 +6,7 @@ router.route('/')
   .get((req, res) => {
     Card
     .forge()
-    .orderBy('status_id', 'ASC')
+    .orderBy('priority_id', 'ASC')
     .fetchAll({withRelated: ['priorities', 'statuses', 'created_by', 'assigned_to']})
     .then((results) => {
       let cardArray = results.toJSON();

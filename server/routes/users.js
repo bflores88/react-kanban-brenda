@@ -10,7 +10,8 @@ router
     new User()
       .fetchAll()
       .then((results) => {
-        return res.status(200).send(results.toJSON());
+        let response = results.toJSON()
+        return res.json(response);
       })
       .catch((err) => {
         console.log('err', err);

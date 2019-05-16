@@ -3,11 +3,13 @@ import './App.css';
 
 import Header from './components/Header';
 import Column from './components/Column';
+import User from './components/User';
 
 // import Card from './containers/Card';
 
 import { connect } from 'react-redux';
-import { loadCards } from './actions';
+import { loadCards, loadUsers } from './actions';
+import UserList from './containers/UserList';
 
 
 
@@ -26,9 +28,7 @@ class App extends React.Component {
 
   render() {
     const cards = this.props.cards;
-    console.log(cards);
     const queued = cards.filter(card => {
-      console.log(card);
       return card.status_id === 1;
     });
     const progress = cards.filter(card => {
@@ -52,6 +52,10 @@ class App extends React.Component {
         <Column status={"DONE"}
           cards={done} />
         </div>
+
+
+        <UserList />
+
         
       </div>
     );
@@ -61,6 +65,7 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
   return {
     cards: state.cardReducer.cards,
+    users: state.cardReducer.users
   };
 };
 
@@ -68,7 +73,11 @@ const mapDispatchToProps = dispatch => {
   return {
     loadCards: () => {
       return dispatch(loadCards());
+    },
+    loadUsers: () => {
+      return dispatch(loadUsers());
     }
+
   }
 }
 
