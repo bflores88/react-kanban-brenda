@@ -4,7 +4,6 @@ import CardList from '../../containers/CardList';
 
 const Column = (props) => {
   let filteredCards = filterStatus(props.cardStatus, props.cards);
-  console.log(filteredCards);
   return (
     <div className="status-column">
       <div className="status-title {props.cardStatus}">{props.cardStatus}</div>
@@ -13,7 +12,6 @@ const Column = (props) => {
   );
 
   function filterStatus(cardStatus, cards) {
-    console.log(cards)
     switch (cardStatus) {
       case 'IN QUEUE':
         return cards.filter((card) => parseInt(card.status_id) === 1);

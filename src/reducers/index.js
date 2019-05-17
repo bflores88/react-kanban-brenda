@@ -3,6 +3,7 @@ import { LOAD_CARDS, ADD_CARD, DELETE_CARD } from '../actions';
 const initialState = {
   cards: [],
   users: [],
+  newTask: false
 };
 
 function cardReducer(state = initialState, action) {

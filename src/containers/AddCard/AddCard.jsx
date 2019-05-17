@@ -1,4 +1,5 @@
 import React, { Component, createRef } from 'react';
+import './AddCard.css';
 import { connect } from 'react-redux';
 import { addCard } from '../../actions';
 
@@ -13,6 +14,7 @@ class AddCard extends Component {
       status_id: 1,
       assigned_to: 1,
       created_by: 1,
+      formErrors: {title: '', body: ''}
     };
 
     this.titleInputRef = createRef();
@@ -24,6 +26,7 @@ class AddCard extends Component {
     this.handleAssignedChange = this.handleAssignedChange.bind(this);
     this.handleCreatedChange = this.handleCreatedChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount() {
@@ -47,7 +50,7 @@ class AddCard extends Component {
   handleStatusChange(e) {
     this.setState({ status_id: e.target.value });
   }
-  
+
   handleAssignedChange(e) {
     this.setState({ assigned_to: e.target.value });
   }
@@ -57,20 +60,9 @@ class AddCard extends Component {
   }
 
   handleSubmit(e) {
-    console.log(this.state);
     e.preventDefault();
 
-    console.log('am i here??')
-
-    const {
-      title,
-      body,
-      priority_id,
-      status_id,
-      created_by,
-      assigned_to
-    } = this.state;
-
+    const { title, body, priority_id, status_id, created_by, assigned_to } = this.state;
 
     this.props.addCard({
       title,
@@ -78,8 +70,8 @@ class AddCard extends Component {
       priority_id,
       status_id,
       created_by,
-      assigned_to
-    })
+      assigned_to,
+    });
 
     this.setState({
       title: '',
@@ -88,92 +80,112 @@ class AddCard extends Component {
       status_id: '',
       assigned_to: '',
       created_by: '',
-    })
+    });
 
-    this.titleInputRef.current.focus();
+    let getModal = document.getElementsByClassName("add-card-div")
+    getModal[0].style.display = 'hidden';
+  }
+
+  closeModal() {
+    let getModal = document.getElementsByClassName("add-card-div")
+    getModal[0].style.display = 'hidden';
   }
 
   render() {
     return (
-      <form className="new-card-form">
-        <div className="form-input">
-          <input
-            type="text"
-            placeholder="title"
-            ref={this.titleInputRef}
-            value={this.state.title}
-            onChange={this.handleTitleChange}
-          />
-        </div>
+      <div className="add-card-div">
+        <form className="new-card-form">
+            <h2>Add New Task</h2>
+          <div className="form-input">
+            <input
+              className="title-input"
+              type="text"
+              placeholder="task"
+              ref={this.titleInputRef}
+              value={this.state.title}
+              onChange={this.handleTitleChange}
+              
+            />
+          </div>
 
-        <div className="form-input">
-          <input type="text" placeholder="body" value={this.state.body} onChange={this.handleBodyChange} />
-        </div>
+          <div className="form-input">
+            <input
+              type="text"
+              className="body-input"
+              placeholder="description"
+              value={this.state.body}
+              onChange={this.handleBodyChange} />
+          </div>
+          <br></br>
+          <div className="form-selector">
+            <div className="selector-title">Priority</div>
+            <select name="priority" value={this.state.value} onChange={this.handlePriorityChange} id="priority">
+              <option value="3">Low</option>
+              <option value="2">Medium</option>
+              <option value="1">High</option>
+              <option value="4">Blocker</option>
+            </select>
+          </div>
 
-        <div className="form-selector">
-          <p>Priority</p>
-          <select name="priority" value={this.state.value} onChange={this.handlePriorityChange} id="priority">
-            <option value="3">Low</option>
-            <option value="2">Medium</option>
-            <option value="1">High</option>
-            <option value="4">Blocker</option>
-          </select>
-        </div>
+          <div className="form-selector">
+            <div className="selector-title">Status</div>
+            <select name="status" value={this.state.value} onChange={this.handleStatusChange} id="priority">
+              <option value="1">In Queue</option>
+              <option value="2">In Progress</option>
+              <option value="3">Done</option>
+            </select>
+          </div>
 
-        <div className="form-selector">
-          <p>Status</p>
-          <select name="status" value={this.state.value} onChange={this.handleStatusChange} id="priority">
-            <option value="1">In Queue</option>
-            <option value="2">In Progress</option>
-            <option value="3">Done</option>
-          </select>
-        </div>
+          <div className="form-selector">
+            <div className="selector-title">Assigned to</div>
+            <select name="assigned_to" value={this.state.value} onChange={this.handleAssignedChange} id="priority">
+              <option value="1">Ginger Spice</option>
+              <option value="2">Baby Spice</option>
+              <option value="3">Scary Spice</option>
+              <option value="4">Posh Spice</option>
+              <option value="4">Sporty Spice</option>
+            </select>
+          </div>
 
-        <div className="form-selector">
-          <p>Assigned To</p>
-          <select name="assigned_to" value={this.state.value} onChange={this.handleAssignedChange} id="priority">
-            <option value="1">Ginger Spice</option>
-            <option value="2">Baby Spice</option>
-            <option value="3">Scary Spice</option>
-            <option value="4">Posh Spice</option>
-            <option value="4">Sporty Spice</option>
-          </select>
-        </div>
-
-        <div className="form-selector">
-          <p>Created By</p>
-          <select name="created_by"  value={this.state.value} onChange={this.handleCreatedChange} id="priority">
-            <option value="1">Ginger Spice</option>
-            <option value="2">Baby Spice</option>
-            <option value="3">Scary Spice</option>
-            <option value="4">Posh Spice</option>
-            <option value="4">Sporty Spice</option>
-          </select>
-        </div>
-
-        <div className="form-submit" onClick={this.handleSubmit}>
-          <button>Submit</button>
-        </div>
-      </form>
+          <div className="form-selector">
+            <div className="selector-title">Created by</div>
+            <select name="created_by" value={this.state.value} onChange={this.handleCreatedChange} id="priority">
+              <option value="1">Ginger Spice</option>
+              <option value="2">Baby Spice</option>
+              <option value="3">Scary Spice</option>
+              <option value="4">Posh Spice</option>
+              <option value="4">Sporty Spice</option>
+            </select>
+          </div>
+          <br></br>
+          <div className="form-submit">
+            <button onClick={this.handleSubmit}>Submit</button>
+          </div>
+          <br></br>
+          <div className="form-submit">
+            <button onClick={this.closeModal}>Close</button>
+          </div>
+        </form>
+      </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
   return {};
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     addCard: (newCard) => {
       dispatch(addCard(newCard));
-    }
+    },
   };
-}
+};
 
 AddCard = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(AddCard);
 
 export default AddCard;

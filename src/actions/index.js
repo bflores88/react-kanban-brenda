@@ -1,4 +1,5 @@
 export const ADD_CARD = 'ADD_CARD';
+export const SHOW_ADD_CARD = 'SHOW_ADD_CARD';
 export const DELETE_CARD = 'DELETE_CARD';
 export const LOAD_CARDS = 'LOAD_CARDS';
 
@@ -16,7 +17,6 @@ export function addCard(newCard) {
       return response.json();
     })
       .then((card) => {
-      console.log('*************', card)
       return dispatch({
         type: ADD_CARD,
         payload: card
@@ -26,8 +26,6 @@ export function addCard(newCard) {
 }
 
 export function deleteCard(cardID) {
-  console.log('here i am')
-  console.log(cardID);
   return (dispatch) => {
     // call out to server
     return fetch('/api/cards', {
@@ -38,7 +36,6 @@ export function deleteCard(cardID) {
       }
     })
     .then((response) => {
-      console.log('****', response)
       return response.json();
     })
     .then((card) => {
@@ -57,7 +54,6 @@ export const loadCards = () => {
         return response.json();
       })
       .then((cards) => {
-        console.log('cards', cards)
         return dispatch({
           type: LOAD_CARDS,
           payload: cards

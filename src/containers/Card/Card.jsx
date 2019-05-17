@@ -31,9 +31,9 @@ class Card extends Component {
   
           <div className="card-bottom">
             <div className="edit-delete">
-              <button>Edit</button>
+              <button className="edit-delete-button" style={{color: "#FAC370"}}>Edit</button>
   
-              <button type="submit" value={this.props.id} onClick={this.handleDelete}>
+              <button className="edit-delete-button" style={{color: "#FAC370"}} type="submit" value={this.props.id} onClick={this.handleDelete}>
                 Delete
               </button>
             </div>
@@ -55,9 +55,9 @@ class Card extends Component {
   
           <div className="card-bottom">
             <div className="edit-delete">
-              <button>Edit</button>
+              <button className="edit-delete-button" style={{color: "#9AD856"}}>Edit</button>
   
-              <button type="submit" value={this.props.id} onClick={this.handleDelete}>
+              <button className="edit-delete-button" style={{color: "#9AD856"}} type="submit" value={this.props.id} onClick={this.handleDelete}>
                 Delete
               </button>
             </div>
@@ -76,9 +76,9 @@ class Card extends Component {
 
         <div className="card-bottom">
           <div className="edit-delete">
-            <button>Edit</button>
+            <button className="edit-delete-button" style={{color: "#C4CAD7"}}>Edit</button>
 
-            <button type="submit" value={this.props.id} onClick={this.handleDelete}>
+            <button className="edit-delete-button" style={{color: "#C4CAD7"}} type="submit" value={this.props.id} onClick={this.handleDelete}>
               Delete
             </button>
           </div>

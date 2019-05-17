@@ -1,5 +1,41 @@
 .card {
   border: 1px solid;
-  margin: 5px;
-  padding: 5px;
+  margin: 5px 10px;
+  padding: 10px;
+  text-align: initial;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.card-priority {
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.card-created-by {
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.card-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+.edit-delete-button {
+  margin-top: 3px;
+  font-size: 12px;
+  border: none;
+  background-color: transparent;
+  font-weight: 700
+}
+
+.card-assigned-to {
+  font-size: 12px;
+  margin-top: 3px;
+  font-weight: 700;
 }
