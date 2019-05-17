@@ -27,7 +27,7 @@ router.route('/')
     })
       .save()
       .then((result) => {
-      return res.send('{ message: successfully added new card }')
+      return res.json(result.toJSON())
       })
       .catch((err) => {
       console.log('error', err)

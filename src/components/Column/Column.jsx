@@ -1,31 +1,30 @@
 import React from 'react';
-import Card from '../../containers/Card';
+import './Column.css';
+import CardList from '../../containers/CardList';
 
 const Column = (props) => {
-
-  const cards = props.cards.map((card, idx) => {
-    return (
-      <Card
-        id={idx}
-        title={card.title}
-        body={card.body}
-        priority={card.priorities.name}
-        priorityID={card.priority_id}
-        status={card.statuses.name}
-        statusID={card.status_id}
-        assigned_to={card.assigned_to.first_name + ' ' + card.assigned_to.last_name}
-        created_by={card.created_by.first_name + ' ' + card.assigned_to.last_name}
-      />
-    )
-  })
-
+  let filteredCards = filterStatus(props.cardStatus, props.cards);
+  console.log(filteredCards);
   return (
     <div className="status-column">
-      <h3 className="status">{props.status}</h3>
-      {cards}
+      <div className="status-title {props.cardStatus}">{props.cardStatus}</div>
+      <CardList cards={filteredCards} />
     </div>
-  )
-  
+  );
+
+  function filterStatus(cardStatus, cards) {
+    console.log(cards)
+    switch (cardStatus) {
+      case 'IN QUEUE':
+        return cards.filter((card) => parseInt(card.status_id) === 1);
+      case 'IN PROGRESS':
+        return cards.filter((card) => parseInt(card.status_id) === 2);
+      case 'DONE':
+        return cards.filter((card) => parseInt(card.status_id) === 3);
+      default:
+        return cards;
+    }
+  }
 };
 
 export default Column;

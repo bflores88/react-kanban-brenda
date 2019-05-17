@@ -14,7 +14,6 @@ class UserList extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.loadUsers)
     this.props.loadUsers();
   }
 
@@ -51,7 +50,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     loadUsers: () => {
-      dispatch(loadUsers());
+      return dispatch(loadUsers());
     }
   };
 }
