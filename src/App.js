@@ -8,8 +8,6 @@ import AddCard from './containers/AddCard';
 
 import { connect } from 'react-redux';
 import { loadCards, loadUsers } from './actions';
-import UserList from './containers/UserList';
-
 
 
 class App extends React.Component {

@@ -1,7 +1,6 @@
 export const ADD_CARD = 'ADD_CARD';
 export const DELETE_CARD = 'DELETE_CARD';
 export const LOAD_CARDS = 'LOAD_CARDS';
-export const LOAD_USERS = 'LOAD_USERS';
 
 export function addCard(newCard) {
   return (dispatch) => {
@@ -16,7 +15,8 @@ export function addCard(newCard) {
     .then((response) => {
       return response.json();
     })
-    .then((card) => {
+      .then((card) => {
+      console.log('*************', card)
       return dispatch({
         type: ADD_CARD,
         payload: card
@@ -62,21 +62,6 @@ export const loadCards = () => {
           type: LOAD_CARDS,
           payload: cards
       })
-    })
-  }
-}
-
-export const loadUsers = () => {
-  return (dispatch) => {
-    return fetch('/api/users')
-      .then((response) => {
-        return response.json();
-      })
-      .then((users) => {
-        return dispatch({
-          type: LOAD_USERS,
-          payload: users
-        })
     })
   }
 }

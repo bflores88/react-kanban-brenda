@@ -27,7 +27,15 @@ router
     })
       .save()
       .then((result) => {
-        return res.json(result.toJSON());
+        return Card.where({ id: result.id })
+          .fetch({ withRelated: ['priorities', 'statuses', 'created_by', 'assigned_to'] })
+          .then((results) => {
+            let cardArray = results.toJSON();
+            return res.json(cardArray);
+          })
+          .catch((err) => {
+            console.log('err', err);
+          });
       })
       .catch((err) => {
         console.log('error', err);
