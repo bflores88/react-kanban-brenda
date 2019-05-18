@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 
-
 class NewTask extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {}
+    this.state = {};
 
     this.handleNewTask = this.handleNewTask.bind(this);
   }
 
   handleNewTask() {
-    let getModal = document.getElementsByClassName("add-card-div")
+    let getModal = document.getElementsByClassName('add-card-div');
     getModal[0].style.display = 'block';
   }
 
@@ -20,9 +19,8 @@ class NewTask extends Component {
       <div className="newTaskDiv" onClick={this.handleNewTask}>
         + NEW TASK
       </div>
-    )
+    );
   }
 }
-
 
 export default NewTask;

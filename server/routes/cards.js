@@ -76,7 +76,15 @@ router.route('/:id').put((req, res) => {
       assigned_to: req.body.assigned_to,
     })
     .then((result) => {
-      res.send('{ message: successfully edited card! }');
+      return Card.where({ id: result.id })
+      .fetch({ withRelated: ['priorities', 'statuses', 'created_by', 'assigned_to'] })
+      .then((results) => {
+        let cardArray = results.toJSON();
+        return res.json(cardArray);
+      })
+      .catch((err) => {
+        console.log('err', err);
+      });
     })
     .catch((err) => {
       console.log('error', err);

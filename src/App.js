@@ -7,7 +7,7 @@ import AddCard from './containers/AddCard';
 
 
 import { connect } from 'react-redux';
-import { loadCards, loadUsers } from './actions';
+import { loadCards } from './actions';
 
 
 class App extends React.Component {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Card.css';
 import { connect } from 'react-redux';
 import { deleteCard } from '../../actions';
+import EditCard from '../EditCard';
 
 class Card extends Component {
   constructor(props) {
@@ -11,11 +12,16 @@ class Card extends Component {
       cards: [],
     };
 
+    this.handleEdit = this.handleEdit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
 
+  handleEdit(e) {
+    document.getElementById(e.target.value).style.display = "block";
+  }
+
   handleDelete(e) {
-    this.props.deleteCard({ id: e.target.value });
+    this.props.deleteCard({ id: parseInt(e.target.value) });
   }
 
   render() {
@@ -31,8 +37,18 @@ class Card extends Component {
   
           <div className="card-bottom">
             <div className="edit-delete">
-              <button className="edit-delete-button" style={{color: "#FAC370"}}>Edit</button>
-  
+              <button className="edit-delete-button" value={this.props.id} style={{ color: "#FAC370" }} onClick={this.handleEdit}>
+                Edit
+              </button>
+              <EditCard
+                  id={this.props.id}
+                  title={this.props.title}
+                  body={this.props.body}
+                  priority_id={this.props.priority_id}
+                  status_id={this.props.status_id}
+                  assigned_to={this.props.assignedID}
+                  created_by={this.props.createdID}
+                />
               <button className="edit-delete-button" style={{color: "#FAC370"}} type="submit" value={this.props.id} onClick={this.handleDelete}>
                 Delete
               </button>
@@ -55,7 +71,18 @@ class Card extends Component {
   
           <div className="card-bottom">
             <div className="edit-delete">
-              <button className="edit-delete-button" style={{color: "#9AD856"}}>Edit</button>
+            <button className="edit-delete-button" value={this.props.id} style={{ color: "#9AD856" }} onClick={this.handleEdit}>
+                Edit
+              </button>
+              <EditCard
+                  id={this.props.id}
+                  title={this.props.title}
+                  body={this.props.body}
+                  priority_id={this.props.priority_id}
+                  status_id={this.props.status_id}
+                  assigned_to={this.props.assignedID}
+                  created_by={this.props.createdID}
+                />
   
               <button className="edit-delete-button" style={{color: "#9AD856"}} type="submit" value={this.props.id} onClick={this.handleDelete}>
                 Delete
@@ -76,7 +103,19 @@ class Card extends Component {
 
         <div className="card-bottom">
           <div className="edit-delete">
-            <button className="edit-delete-button" style={{color: "#C4CAD7"}}>Edit</button>
+          <button className="edit-delete-button" value={this.props.id} style={{ color: "#C4CAD7" }} onClick={this.handleEdit}>
+                Edit
+                     
+              </button>
+              <EditCard
+                  id={this.props.id}
+                  title={this.props.title}
+                  body={this.props.body}
+                  priority_id={this.props.priority_id}
+                  status_id={this.props.status_id}
+                  assigned_to={this.props.assignedID}
+                  created_by={this.props.createdID}
+                />
 
             <button className="edit-delete-button" style={{color: "#C4CAD7"}} type="submit" value={this.props.id} onClick={this.handleDelete}>
               Delete
