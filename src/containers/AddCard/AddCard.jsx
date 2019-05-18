@@ -75,17 +75,16 @@ class AddCard extends Component {
     this.setState({
       title: '',
       body: '',
-      priority_id: '',
-      status_id: '',
-      assigned_to: '',
-      created_by: '',
+      priority_id: 3,
+      status_id: 1,
+      assigned_to: 1,
+      created_by: 1,
     });
-
-  
     
   }
 
-  render() 
+  render() {
+
     return (
       <div className="add-card-div" id="form-modal" style={{ display: this.props.show } }>
         <form className="new-card-form">

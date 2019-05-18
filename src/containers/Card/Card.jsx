@@ -10,15 +10,25 @@ class Card extends Component {
 
     this.state = {
       cards: [],
+      editDisplay: "none"
     };
 
-    this.handleEdit = this.handleEdit.bind(this);
+    this.showEdit = this.showEdit.bind(this);
+    this.hideEdit = this.hideEdit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+
   }
 
-  handleEdit(e) {
-    document.getElementById(e.target.value).style.display = "block";
+  showEdit(e) {
+    e.preventDefault();
+    this.setState({editDisplay: "block"})
   }
+
+  hideEdit(e) {
+    e.preventDefault();
+    this.setState({editDisplay: "none"})
+  }
+
 
   handleDelete(e) {
     this.props.deleteCard({ id: parseInt(e.target.value) });
@@ -28,8 +38,8 @@ class Card extends Component {
 
     if (this.props.status === "IN QUEUE") {
       
-      return  (
-
+      return (
+        <>
         <div className="card" style={{backgroundColor: "#FDF1DE", borderColor: "#FAC370"}}>
           <div className="card-title">{this.props.title}</div>
           <div className="card-priority">Priority:&nbsp;{this.props.priority}</div>
@@ -37,18 +47,9 @@ class Card extends Component {
   
           <div className="card-bottom">
             <div className="edit-delete">
-              <button className="edit-delete-button" value={this.props.id} style={{ color: "#FAC370" }} onClick={this.handleEdit}>
+              <button className="edit-delete-button" value={this.props.id} style={{ color: "#FAC370" }} onClick={this.showEdit}>
                 Edit
               </button>
-              <EditCard
-                  id={this.props.id}
-                  title={this.props.title}
-                  body={this.props.body}
-                  priority_id={this.props.priority_id}
-                  status_id={this.props.status_id}
-                  assigned_to={this.props.assignedID}
-                  created_by={this.props.createdID}
-                />
               <button className="edit-delete-button" style={{color: "#FAC370"}} type="submit" value={this.props.id} onClick={this.handleDelete}>
                 Delete
               </button>
@@ -57,13 +58,25 @@ class Card extends Component {
             <div className="card-assigned-to">{this.props.assigned_to}</div>
           </div>
         </div>
+          <EditCard
+          id={this.props.id}
+          title={this.props.title}
+          body={this.props.body}
+          priority_id={this.props.priority_id}
+          status_id={this.props.status_id}
+          assigned_to={this.props.assignedID}
+          created_by={this.props.createdID}
+          hideEdit={this.hideEdit}
+          editDisplay={this.state.editDisplay}
+            />
+        </>
       );
     }
 
     if (this.props.status === "IN PROGRESS") {
       
-      return  (
-
+      return (
+        <>
         <div className="card" style={{backgroundColor: "#E5FDCA", borderColor: "#9AD856"}}>
           <div className="card-title">{this.props.title}</div>
           <div className="card-priority">Priority:&nbsp;{this.props.priority}</div>
@@ -71,31 +84,33 @@ class Card extends Component {
   
           <div className="card-bottom">
             <div className="edit-delete">
-            <button className="edit-delete-button" value={this.props.id} style={{ color: "#9AD856" }} onClick={this.handleEdit}>
+            <button className="edit-delete-button" value={this.props.id} style={{ color: "#9AD856" }} onClick={this.showEdit}>
                 Edit
               </button>
-              <EditCard
-                  id={this.props.id}
-                  title={this.props.title}
-                  body={this.props.body}
-                  priority_id={this.props.priority_id}
-                  status_id={this.props.status_id}
-                  assigned_to={this.props.assignedID}
-                  created_by={this.props.createdID}
-                />
-  
-              <button className="edit-delete-button" style={{color: "#9AD856"}} type="submit" value={this.props.id} onClick={this.handleDelete}>
+             <button className="edit-delete-button" style={{color: "#9AD856"}} type="submit" value={this.props.id} onClick={this.handleDelete}>
                 Delete
               </button>
             </div>
   
             <div className="card-assigned-to">{this.props.assigned_to}</div>
           </div>
-        </div>
+          </div>
+          <EditCard
+          id={this.props.id}
+          title={this.props.title}
+          body={this.props.body}
+          priority_id={this.props.priority_id}
+          status_id={this.props.status_id}
+          assigned_to={this.props.assignedID}
+          created_by={this.props.createdID}
+          hideEdit={this.hideEdit}
+          editDisplay={this.state.editDisplay}
+            />
+        </>
       );
     }
     return (
-
+      <>
       <div className="card" style={{backgroundColor: "#F7F8FC", borderColor: "#C4CAD7"}}>
         <div className="card-title">{this.props.title}</div>
         <div className="card-priority">Priority:&nbsp;{this.props.priority}</div>
@@ -103,20 +118,10 @@ class Card extends Component {
 
         <div className="card-bottom">
           <div className="edit-delete">
-          <button className="edit-delete-button" value={this.props.id} style={{ color: "#C4CAD7" }} onClick={this.handleEdit}>
+          <button className="edit-delete-button" value={this.props.id} style={{ color: "#C4CAD7" }} onClick={this.showEdit}>
                 Edit
                      
               </button>
-              <EditCard
-                  id={this.props.id}
-                  title={this.props.title}
-                  body={this.props.body}
-                  priority_id={this.props.priority_id}
-                  status_id={this.props.status_id}
-                  assigned_to={this.props.assignedID}
-                  created_by={this.props.createdID}
-                />
-
             <button className="edit-delete-button" style={{color: "#C4CAD7"}} type="submit" value={this.props.id} onClick={this.handleDelete}>
               Delete
             </button>
@@ -124,7 +129,19 @@ class Card extends Component {
 
           <div className="card-assigned-to">{this.props.assigned_to}</div>
         </div>
-      </div>
+        </div>
+        <EditCard
+          id={this.props.id}
+          title={this.props.title}
+          body={this.props.body}
+          priority_id={this.props.priority_id}
+          status_id={this.props.status_id}
+          assigned_to={this.props.assignedID}
+          created_by={this.props.createdID}
+          hideEdit={this.hideEdit}
+          editDisplay={this.state.editDisplay}
+            />
+        </>
     );
   }
 }
