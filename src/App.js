@@ -3,7 +3,6 @@ import './App.css';
 
 import Header from './components/Header';
 import Column from './components/Column';
-import AddCard from './containers/AddCard';
 
 
 import { connect } from 'react-redux';
@@ -28,7 +27,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Header title={this.state.title} />
+          <Header title={this.state.title} show={this.state.show} handleClose={this.hideNewModal} handleOpen={this.showNewModal} />
         </header>
 
         <div className="status-container">
@@ -36,8 +35,6 @@ class App extends React.Component {
           <Column cardStatus={'IN PROGRESS'} cards={this.props.cards} />
           <Column cardStatus={'DONE'} cards={this.props.cards}/>
         </div>
-
-        <AddCard />
         
       </div>
     );

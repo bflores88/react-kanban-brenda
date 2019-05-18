@@ -2,6 +2,7 @@ export const ADD_CARD = 'ADD_CARD';
 export const DELETE_CARD = 'DELETE_CARD';
 export const EDIT_CARD = 'EDIT_CARD';
 export const LOAD_CARDS = 'LOAD_CARDS';
+export const SHOW_ADD_CARD = 'SHOW_ADD_CARD';
 
 export function addCard(newCard) {
   return (dispatch) => {
@@ -85,3 +86,16 @@ export const loadCards = () => {
       });
   };
 };
+
+export function showAddCard(showState) {
+  console.log('clicked')
+  console.log('showState')
+  return (dispatch) => {
+    return dispatch({
+      type: SHOW_ADD_CARD,
+      payload: {
+        show: showState
+      }
+    })
+  }
+}

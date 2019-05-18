@@ -16,6 +16,7 @@ class EditCard extends Component {
       status_id: '',
       assigned_to: '',
       created_by: '',
+      show: 'none'
     };
 
     this.titleInputRef = createRef();
@@ -96,17 +97,13 @@ class EditCard extends Component {
 
   }
 
-  handleCloseModal() {
-    let closeDiv = document.getElementsByClassName("edit-card-div")
-    for (let i = 0; i < closeDiv.length; i++){
-      closeDiv[i].style.display = "none";
-    }
-    
+  handleCloseModal(e) {
+    this.setState({show: "none"})
   }
 
   render() {
     return (
-      <div className="edit-card-div" id={this.props.id} style={{ display: "none" }}>
+      <div className="edit-card-div" id={this.props.id} style={{ display: this.state.show }}>
         <form className="new-card-form">
             <h2>Edit Task</h2>
           <div className="form-input">
@@ -172,11 +169,11 @@ class EditCard extends Component {
           </div>
           <br></br>
           <div className="form-submit">
-            <button onClick={this.handleSubmit}>Submit</button>
+            <button className="edit-form-button" onClick={this.handleSubmit}>Submit</button>
           </div>
           <br></br>
           <div className="form-submit">
-            <button onClick={this.handleCloseModal}>Close</button>
+            <button className="edit-form-button" value={this.props.id} onClick={this.handleCloseModal}>Close</button>
           </div>
         </form>
       </div>

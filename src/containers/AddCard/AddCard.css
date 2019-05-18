@@ -1,4 +1,5 @@
 .add-card-div {
+  color: black;
   display: none;
   position: fixed;
   z-index: 1;

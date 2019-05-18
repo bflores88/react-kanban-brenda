@@ -14,11 +14,11 @@ class AddCard extends Component {
       status_id: 1,
       assigned_to: 1,
       created_by: 1,
+      
     };
 
     this.titleInputRef = createRef();
 
-    this.handleCloseModal = this.handleCloseModal.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handlePriorityChange = this.handlePriorityChange.bind(this);
@@ -85,13 +85,9 @@ class AddCard extends Component {
     
   }
 
-  handleCloseModal() {
-    document.getElementById("form-modal").style.display = 'hidden';
-  }
-
-  render() {
+  render() 
     return (
-      <div className="add-card-div" id="form-modal">
+      <div className="add-card-div" id="form-modal" style={{ display: this.props.show } }>
         <form className="new-card-form">
             <h2>Add New Task</h2>
           <div className="form-input">
@@ -157,11 +153,11 @@ class AddCard extends Component {
           </div>
           <br></br>
           <div className="form-submit">
-            <button onClick={this.handleSubmit}>Submit</button>
+            <button className="edit-form-button" onClick={this.handleSubmit}>Submit</button>
           </div>
           <br></br>
           <div className="form-submit">
-            <button onClick={this.handleCloseModal}>Close</button>
+            <button className="edit-form-button" onClick={this.props.hide}>Close</button>
           </div>
         </form>
       </div>

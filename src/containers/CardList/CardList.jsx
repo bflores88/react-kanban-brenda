@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Card from '../Card';
-import EditCard from '../EditCard';
 
 class CardList extends Component {
   constructor(props) {
