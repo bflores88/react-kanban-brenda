@@ -2,6 +2,7 @@ import React, { Component, createRef } from 'react';
 import './AddCard.css';
 import { connect } from 'react-redux';
 import { addCard } from '../../actions';
+import UserList from '../UserList';
 
 class AddCard extends Component {
   constructor(props) {
@@ -132,22 +133,14 @@ class AddCard extends Component {
           <div className="form-selector">
             <div className="selector-title">Assigned to</div>
             <select name="assigned_to" value={this.state.value} onChange={this.handleAssignedChange} id="priority">
-              <option value="1">Ginger Spice</option>
-              <option value="2">Baby Spice</option>
-              <option value="3">Scary Spice</option>
-              <option value="4">Posh Spice</option>
-              <option value="4">Sporty Spice</option>
+              <UserList />
             </select>
           </div>
 
           <div className="form-selector">
             <div className="selector-title">Created by</div>
             <select name="created_by" value={this.state.value} onChange={this.handleCreatedChange} id="priority">
-              <option value="1">Ginger Spice</option>
-              <option value="2">Baby Spice</option>
-              <option value="3">Scary Spice</option>
-              <option value="4">Posh Spice</option>
-              <option value="4">Sporty Spice</option>
+              <UserList />
             </select>
           </div>
           <br></br>

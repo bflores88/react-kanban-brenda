@@ -1,0 +1,6 @@
+.new-task-button:hover {
+  background-color: white;
+  border-color: #4C525A;
+  color: #4C525A;
+  cursor: pointer
+}

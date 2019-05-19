@@ -13,6 +13,7 @@ select {
 
 .edit-form-button:hover {
   background-color: #888888;
+  cursor: pointer;
 }
 
 .edit-card-div {

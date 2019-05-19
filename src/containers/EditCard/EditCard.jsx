@@ -3,6 +3,7 @@ import '../AddCard/AddCard.css';
 import { connect } from 'react-redux';
 import { editCard } from '../../actions';
 import './EditCard.css';
+import UserList from '../UserList';
 
 class EditCard extends Component {
   constructor(props) {
@@ -150,22 +151,14 @@ class EditCard extends Component {
           <div className="form-selector">
             <div className="selector-title">Assigned to</div>
             <select name="assigned_to" value={this.state.assigned_to} onChange={this.handleAssignedChange} id="priority">
-              <option value="1">Ginger Spice</option>
-              <option value="2">Baby Spice</option>
-              <option value="3">Scary Spice</option>
-              <option value="4">Posh Spice</option>
-              <option value="4">Sporty Spice</option>
+              <UserList />
             </select>
           </div>
 
           <div className="form-selector">
             <div className="selector-title">Created by</div>
             <select name="created_by" value={this.state.created_by} onChange={this.handleCreatedChange} id="priority">
-              <option value="1">Ginger Spice</option>
-              <option value="2">Baby Spice</option>
-              <option value="3">Scary Spice</option>
-              <option value="4">Posh Spice</option>
-              <option value="4">Sporty Spice</option>
+              <UserList />
             </select>
           </div>
           <br></br>

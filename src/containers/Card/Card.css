@@ -1,6 +1,7 @@
 .edit-delete-button:hover {
   font-style: italic;
   text-shadow: 2px 2px 3px black;
+  cursor: pointer;
 }
 
 

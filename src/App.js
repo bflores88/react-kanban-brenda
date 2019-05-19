@@ -6,7 +6,6 @@ import Column from './components/Column';
 
 import { connect } from 'react-redux';
 import { loadCards } from './actions';
-import { thisExpression } from '@babel/types';
 
 class App extends React.Component {
   constructor(props) {

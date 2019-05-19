@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AddCard from '../AddCard';
+import './NewTask.css';
 
 class NewTask extends Component {
   constructor(props) {
