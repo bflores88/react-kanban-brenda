@@ -56,7 +56,7 @@ export function editCard(editedCard) {
       })
       .then((card) => {
         return dispatch({
-          type: ADD_CARD,
+          type: EDIT_CARD,
           payload: card,
         });
       });

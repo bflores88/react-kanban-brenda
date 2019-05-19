@@ -81,6 +81,8 @@ class AddCard extends Component {
       assigned_to: 1,
       created_by: 1,
     });
+
+    (this.props.hide)(e);
     
   }
 

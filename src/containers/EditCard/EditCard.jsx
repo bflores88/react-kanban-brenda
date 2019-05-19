@@ -10,19 +10,18 @@ class EditCard extends Component {
     super(props);
 
     this.state = {
-      id: '',
-      title: '',
-      body: '',
-      priority_id: '',
-      status_id: '',
-      assigned_to: '',
-      created_by: '',
+      id: this.props.id,
+      title: this.props.title,
+      body: this.props.body,
+      priority_id: this.props.priority_id,
+      status_id: this.props.status_id,
+      assigned_to: this.props.assigned_to,
+      created_by: this.props.created_by,
       show: 'none'
     };
 
     this.titleInputRef = createRef();
 
-    this.handleCloseModal = this.handleCloseModal.bind(this);
     this.handleNewTitle = this.handleNewTitle.bind(this);
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handlePriorityChange = this.handlePriorityChange.bind(this);
@@ -32,17 +31,22 @@ class EditCard extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    this.setState({
-      id: this.props.id,
-      title: this.props.title,
-      body: this.props.body,
-      priority_id: this.props.priority_id,
-      status_id: this.props.status_id,
-      assigned_to: this.props.assigned_to,
-      created_by: this.props.created_by
-    })
+  componentDidUpdate(prevProps) {
+    if (prevProps.id !== this.props.id) {
+      this.setState({
+        id: this.props.id,
+        title: this.props.title,
+        body: this.props.body,
+        priority_id: this.props.priority_id,
+        status_id: this.props.status_id,
+        assigned_to: this.props.assigned_to,
+        created_by: this.props.created_by,
+        show: 'none'
+      })
+    }
   }
+
+  
 
   handleNewTitle(e) {
     const { value } = e.target;
@@ -86,33 +90,21 @@ class EditCard extends Component {
       assigned_to,
     });
 
-    this.setState({
-      id: '',
-      title: '',
-      body: '',
-      priority_id: '',
-      status_id: '',
-      assigned_to: '',
-      created_by: '',
-    });
+    (this.props.hideEdit)(e)
 
   }
 
-  handleCloseModal(e) {
-  
-    this.setState({show: "none"})
-  }
 
   render() {
     return (
-      <div className="edit-card-div" id={this.props.id} style={{ display: this.props.editDisplay }}>
+      <div className="edit-card-div" id={this.state.id} style={{ display: this.props.editDisplay }}>
         <form className="new-card-form">
             <h2>Edit Task</h2>
           <div className="form-input">
             <input
               className="title-input"
               type="text"
-              placeholder={this.props.title}
+              placeholder={this.state.title}
               ref={this.titleInputRef}
               value={this.state.title}
               onChange={this.handleNewTitle}
@@ -124,7 +116,7 @@ class EditCard extends Component {
             <input
               type="text"
               className="body-input"
-              placeholder={this.props.body}
+              placeholder={this.state.body}
               value={this.state.body}
               onChange={this.handleBodyChange} />
           </div>
@@ -176,7 +168,8 @@ class EditCard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

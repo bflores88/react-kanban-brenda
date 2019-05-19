@@ -14,11 +14,11 @@ const Column = (props) => {
   function filterStatus(cardStatus, cards) {
     switch (cardStatus) {
       case 'IN QUEUE':
-        return cards.filter((card) => parseInt(card.status_id) === 1);
+        return cards.filter((card) => parseInt(card.status_id) === 1).sort((a, b) => a.priority_id - b.priority_id);
       case 'IN PROGRESS':
-        return cards.filter((card) => parseInt(card.status_id) === 2);
+        return cards.filter((card) => parseInt(card.status_id) === 2).sort((a, b) => a.priority_id - b.priority_id);
       case 'DONE':
-        return cards.filter((card) => parseInt(card.status_id) === 3);
+        return cards.filter((card) => parseInt(card.status_id) === 3).sort((a, b) => a.priority_id - b.priority_id);
       default:
         return cards;
     }
