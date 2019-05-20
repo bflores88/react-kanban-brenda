@@ -53,14 +53,19 @@ class Login extends Component {
         <div className="login-modal">
           <div className="login-container">
             <div className="login-header">KANBAN</div>
-            Log in to view board
+            <div className="login-title">Log in to view board</div>
             <div className="login-form-div">
               <form className="login-form">
-                <label name="username">Username</label>
+                <div className="login-input-div">
+                <label name="username login-label">Username</label>
                 <input type="text" className="login-input" name="username" placeholder="username" onChange={this.handleUsernameChange} />
-                <br />
-                <label name="password">Password</label>
+                </div>
+                <div className="login-input-div">
+                  
+                <label name="password login-label">Password</label>
                 <input type="password" className="login-input" name="password" placeholder="password" onChange={this.handlePassWordChange}/>
+                </div>
+
                 <button type="submit" onClick={this.handleLoginSubmit}>Log Me In!</button>
               </form>
             </div>

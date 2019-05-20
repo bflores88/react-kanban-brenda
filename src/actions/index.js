@@ -112,8 +112,7 @@ export function login(userPass) {
       },
     })
       .then((response) => {
-        const loggedIn = response
-        return loggedIn.json();
+        return response.json();
       })
       .then((auth) => {
         return dispatch({

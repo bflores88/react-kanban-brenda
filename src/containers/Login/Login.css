@@ -34,3 +34,28 @@
   color: white;
 
 }
+
+.login-form {
+  text-align: left;
+  margin-left: 40px;
+  margin-right: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.login-label {
+  margin-right: 30px;
+}
+
+.login-input {
+  width: 30%
+}
+
+.login-title {
+  margin: 40px 40px;;
+  font-size: 24px;
+  text-align: left;
+
+}
+
