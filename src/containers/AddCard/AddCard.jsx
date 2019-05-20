@@ -115,7 +115,7 @@ class AddCard extends Component {
           <br></br>
           <div className="form-selector">
             <div className="selector-title">Priority</div>
-            <select name="priority" value={this.state.value} onChange={this.handlePriorityChange} id="priority">
+            <select name="priority" value={this.state.value} onChange={this.handlePriorityChange}>
               <option value="3">Low</option>
               <option value="2">Medium</option>
               <option value="1">High</option>
@@ -125,7 +125,7 @@ class AddCard extends Component {
 
           <div className="form-selector">
             <div className="selector-title">Status</div>
-            <select name="status" value={this.state.value} onChange={this.handleStatusChange} id="priority">
+            <select name="status" value={this.state.value} onChange={this.handleStatusChange}>
               <option value="1">In Queue</option>
               <option value="2">In Progress</option>
               <option value="3">Done</option>
@@ -134,14 +134,14 @@ class AddCard extends Component {
 
           <div className="form-selector">
             <div className="selector-title">Assigned to</div>
-            <select name="assigned_to" value={this.state.value} onChange={this.handleAssignedChange} id="priority">
+            <select name="assigned_to" value={this.state.value} onChange={this.handleAssignedChange}>
               <UserList />
             </select>
           </div>
 
           <div className="form-selector">
             <div className="selector-title">Created by</div>
-            <select name="created_by" value={this.state.value} onChange={this.handleCreatedChange} id="priority">
+            <select name="created_by" value={this.state.value} onChange={this.handleCreatedChange}>
               <UserList />
             </select>
           </div>
@@ -151,7 +151,7 @@ class AddCard extends Component {
           </div>
           <br></br>
           <div className="form-submit">
-            <button className="edit-form-button" onClick={this.props.hide}>Close</button>
+            <button className="edit-form-button close-form-button" onClick={this.props.hide}>Close</button>
           </div>
         </form>
       </div>

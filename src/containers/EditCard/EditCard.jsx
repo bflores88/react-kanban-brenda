@@ -17,7 +17,7 @@ class EditCard extends Component {
       status_id: this.props.status_id,
       assigned_to: this.props.assigned_to,
       created_by: this.props.created_by,
-      show: 'none'
+      show: 'none',
     };
 
     this.titleInputRef = createRef();
@@ -41,12 +41,10 @@ class EditCard extends Component {
         status_id: this.props.status_id,
         assigned_to: this.props.assigned_to,
         created_by: this.props.created_by,
-        show: 'none'
-      })
+        show: 'none',
+      });
     }
   }
-
-  
 
   handleNewTitle(e) {
     const { value } = e.target;
@@ -75,7 +73,6 @@ class EditCard extends Component {
   }
 
   handleSubmit(e) {
-
     e.preventDefault();
 
     const { id, title, body, priority_id, status_id, created_by, assigned_to } = this.state;
@@ -90,16 +87,14 @@ class EditCard extends Component {
       assigned_to,
     });
 
-    (this.props.hideEdit)(e)
-
+    this.props.hideEdit(e);
   }
-
 
   render() {
     return (
-      <div className="edit-card-div" id={this.state.id} style={{ display: this.props.editDisplay }}>
+      <div className="edit-card-div" style={{ display: this.props.editDisplay }}>
         <form className="new-card-form">
-            <h2>Edit Task</h2>
+          <h2>Edit Task</h2>
           <div className="form-input">
             <input
               className="title-input"
@@ -108,7 +103,6 @@ class EditCard extends Component {
               ref={this.titleInputRef}
               value={this.state.title}
               onChange={this.handleNewTitle}
-              
             />
           </div>
 
@@ -118,12 +112,13 @@ class EditCard extends Component {
               className="body-input"
               placeholder={this.state.body}
               value={this.state.body}
-              onChange={this.handleBodyChange} />
+              onChange={this.handleBodyChange}
+            />
           </div>
-          <br></br>
+          <br />
           <div className="form-selector">
             <div className="selector-title">Priority</div>
-            <select name="priority" value={this.state.priority_id} onChange={this.handlePriorityChange} id="priority">
+            <select name="priority" value={this.state.priority_id} onChange={this.handlePriorityChange}>
               <option value="3">Low</option>
               <option value="2">Medium</option>
               <option value="1">High</option>
@@ -133,7 +128,7 @@ class EditCard extends Component {
 
           <div className="form-selector">
             <div className="selector-title">Status</div>
-            <select name="status" value={this.state.status_id} onChange={this.handleStatusChange} id="priority">
+            <select name="status" value={this.state.status_id} onChange={this.handleStatusChange}>
               <option value="1">In Queue</option>
               <option value="2">In Progress</option>
               <option value="3">Done</option>
@@ -142,24 +137,32 @@ class EditCard extends Component {
 
           <div className="form-selector">
             <div className="selector-title">Assigned to</div>
-            <select name="assigned_to" value={this.state.assigned_to} onChange={this.handleAssignedChange} id="priority">
+            <select
+              name="assigned_to"
+              value={this.state.assigned_to}
+              onChange={this.handleAssignedChange}
+            >
               <UserList />
             </select>
           </div>
 
           <div className="form-selector">
             <div className="selector-title">Created by</div>
-            <select name="created_by" value={this.state.created_by} onChange={this.handleCreatedChange} id="priority">
+            <select name="created_by" value={this.state.created_by} onChange={this.handleCreatedChange}>
               <UserList />
             </select>
           </div>
-          <br></br>
+          <br />
           <div className="form-submit">
-            <button className="edit-form-button" onClick={this.handleSubmit}>Submit</button>
+            <button className="edit-form-button" onClick={this.handleSubmit}>
+              Submit
+            </button>
           </div>
-          <br></br>
+          <br />
           <div className="form-submit">
-            <button className="edit-form-button" value={this.props.id} onClick={this.props.hideEdit}>Close</button>
+            <button className="edit-form-button close-form-button" value={this.props.id} onClick={this.props.hideEdit}>
+              Close
+            </button>
           </div>
         </form>
       </div>
@@ -168,8 +171,7 @@ class EditCard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-  };
+  return {};
 };
 
 const mapDispatchToProps = (dispatch) => {

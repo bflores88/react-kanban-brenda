@@ -3,6 +3,7 @@ export const ADD_CARD = 'ADD_CARD';
 export const EDIT_CARD = 'EDIT_CARD';
 export const DELETE_CARD = 'DELETE_CARD';
 export const LOAD_USERS = 'LOAD_USERS';
+export const LOGIN = 'LOGIN';
 
 export const loadCards = () => {
   return (dispatch) => {
@@ -99,3 +100,26 @@ export const loadUsers = () => {
       });
   };
 };
+
+export function login(userPass) {
+  return (dispatch) => {
+    // call out to server
+    return fetch('/api/auth', {
+      method: 'POST',
+      body: JSON.stringify(userPass),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        const loggedIn = response
+        return loggedIn.json();
+      })
+      .then((auth) => {
+        return dispatch({
+          type: LOGIN,
+          payload: auth,
+        });
+      });
+  };
+}

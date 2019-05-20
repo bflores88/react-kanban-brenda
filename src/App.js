@@ -1,19 +1,21 @@
 import React from 'react';
 import './App.css';
 
+import Login from './containers/Login';
 import Header from './components/Header';
 import Column from './components/Column';
 
 import { connect } from 'react-redux';
-import { loadCards } from './actions';
+import { loadCards, login } from './actions';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      title: 'KANBAN',
+      title: 'KANBAN'
     };
+
   }
 
   componentDidMount() {
@@ -21,6 +23,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.props.auth)
     return (
       <>
         <div className="App">
@@ -32,6 +35,10 @@ class App extends React.Component {
               handleOpen={this.showNewModal}
             />
           </header>
+
+          <section className="login-section">
+            <Login />
+          </section>
 
           <div className="status-container">
             <Column cardStatus={'IN QUEUE'} cards={this.props.cards} />
@@ -54,6 +61,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     loadCards: () => {
       return dispatch(loadCards());
+    },
+    login: (e) => {
+      return dispatch(login(e));
     },
   };
 };
