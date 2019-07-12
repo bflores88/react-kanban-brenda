@@ -28,7 +28,6 @@ class Login extends Component {
   }
 
   handleLoginSubmit(e) {
-    console.log('login submit hit')
     e.preventDefault()
 
     const { username, password } = this.state;
@@ -40,34 +39,40 @@ class Login extends Component {
 
     this.setState({
       username: '',
-      password: ''
+      password: '',
     })
 
   }
 
   render() {
-    console.log(this.props.auth);
-    if (this.props.auth === false) {
+    let errorMessage = '';
+    if (this.props.auth === 'error') {
+      errorMessage = "Incorrect username or password."
+    }
+
+    if (this.props.auth !== true) {
 
       return (
         <div className="login-modal">
           <div className="login-container">
             <div className="login-header">KANBAN</div>
-            <div className="login-title">Log in to view board</div>
             <div className="login-form-div">
+            <div className="login-title">Log in to view board</div>
               <form className="login-form">
-                <div className="login-input-div">
-                <label name="username login-label">Username</label>
+                <div className="error-message">
+                  {errorMessage}
+                </div>
+                
                 <input type="text" className="login-input" name="username" placeholder="username" onChange={this.handleUsernameChange} />
-                </div>
-                <div className="login-input-div">
-                  
-                <label name="password login-label">Password</label>
-                <input type="password" className="login-input" name="password" placeholder="password" onChange={this.handlePassWordChange}/>
-                </div>
+                
+                <input type="password" className="login-input" name="password" placeholder="password" onChange={this.handlePassWordChange}/> 
 
-                <button type="submit" onClick={this.handleLoginSubmit}>Log Me In!</button>
+                <button className="submit" type="submit" onClick={this.handleLoginSubmit}>Log Me In!</button>
               </form>
+            </div>
+            <div className="login-example">
+              <p>Username: Ginger</p>
+              <p>Password: abc123</p>
             </div>
           </div>
         </div>

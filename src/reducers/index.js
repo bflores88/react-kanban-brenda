@@ -1,4 +1,4 @@
-import { LOAD_CARDS, ADD_CARD, EDIT_CARD, DELETE_CARD, LOAD_USERS, LOGIN } from '../actions';
+import { LOAD_CARDS, ADD_CARD, EDIT_CARD, DELETE_CARD, LOAD_USERS, LOGIN, LOGOUT } from '../actions';
 
 const initialState = {
   cards: [],
@@ -23,8 +23,8 @@ function cardReducer(state = initialState, action) {
     case LOAD_USERS:
       return Object.assign({}, state, { users: [...action.payload] });
     case LOGIN:
-      console.log('got to login reducer');
-      console.log(action.payload)
+      return Object.assign({}, state, { auth: action.payload });
+    case LOGOUT:
       return Object.assign({}, state, { auth: action.payload });
     default:
       return state;

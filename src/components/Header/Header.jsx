@@ -1,5 +1,6 @@
 import React from 'react';
 import NewTask from '../../containers/New Task';
+import Logout from '../../containers/Logout';
 import './Header.css'
 
 const Header = (props) => {
@@ -8,7 +9,10 @@ const Header = (props) => {
   return (
     <div className="header">
       <div className="header-title">{title}</div>
-      <div className="new-task-button"><NewTask show={show} handleOpen={handleOpen}/></div>
+      <div className="button-container">
+        <div className="new-task-button"><NewTask show={show} handleOpen={handleOpen} /></div>
+        <div className="logout-button"><Logout /></div>
+      </div>
     </div>
   );
 };
