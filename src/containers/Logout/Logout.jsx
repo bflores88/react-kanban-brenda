@@ -13,7 +13,6 @@ class Logout extends Component {
   }
 
   handleLogout() {
-    console.log('logout button clicked')
     return this.props.logout();
   }
 

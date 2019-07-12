@@ -5,8 +5,8 @@ html {
   box-sizing: inherit;
 }
 
-button {
-  background-color: lightblue;
+.submit {
+  background-color: rgb(227, 185, 227);
   border-radius: 5px;
   height: 35px;
   padding: 5px 10px;
@@ -14,7 +14,7 @@ button {
 }
 
 button:hover {
-  background-color: black;
+  background-color: purple;
 }
 
 .login-modal {
@@ -27,6 +27,12 @@ button:hover {
   overflow: auto;
   background-color:rgba(0,0,0,0.3);
 
+}
+
+.error-message {
+  margin-bottom: 10px;
+  color: red;
+  font-style: oblique;
 }
 
 .login-container {
@@ -83,6 +89,7 @@ button:hover {
   height: 35px;
   border: 0px;
   border-bottom: 1px dotted lightslategray;
+  border-radius: 5px;
   background: rgba(176, 196, 222, 0.3)
 }
 
