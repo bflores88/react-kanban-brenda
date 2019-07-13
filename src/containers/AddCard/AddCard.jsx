@@ -118,6 +118,7 @@ class AddCard extends Component {
               className="title-input"
               type="text"
               placeholder="task"
+              maxLength="200"
               ref={this.titleInputRef}
               value={this.state.title}
               onChange={this.handleTitleChange}
@@ -130,6 +131,7 @@ class AddCard extends Component {
               type="text"
               className="body-input"
               placeholder="description"
+              maxLength="500"
               value={this.state.body}
               onChange={this.handleBodyChange} />
           </div>

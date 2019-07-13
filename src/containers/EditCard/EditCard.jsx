@@ -99,6 +99,7 @@ class EditCard extends Component {
             <input
               className="title-input"
               type="text"
+              maxLength="200"
               placeholder={this.state.title}
               ref={this.titleInputRef}
               value={this.state.title}
@@ -110,6 +111,7 @@ class EditCard extends Component {
             <input
               type="text"
               className="body-input"
+              maxLength="500"
               placeholder={this.state.body}
               value={this.state.body}
               onChange={this.handleBodyChange}
