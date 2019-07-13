@@ -70,10 +70,6 @@ class Login extends Component {
                 <button className="submit" type="submit" onClick={this.handleLoginSubmit}>Log Me In!</button>
               </form>
             </div>
-            <div className="login-example">
-              <p>Username: Ginger</p>
-              <p>Password: abc123</p>
-            </div>
           </div>
         </div>
       );

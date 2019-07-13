@@ -27,6 +27,7 @@ class AddCard extends Component {
     this.handleAssignedChange = this.handleAssignedChange.bind(this);
     this.handleCreatedChange = this.handleCreatedChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   componentDidMount() {
@@ -86,7 +87,27 @@ class AddCard extends Component {
     
   }
 
+  handleClose(e) {
+    e.preventDefault();
+
+    this.setState({
+      title: '',
+      body: '',
+      priority_id: 3,
+      status_id: 1,
+      assigned_to: 1,
+      created_by: 1,
+    });
+
+    (this.props.hide)(e);
+
+  }
+
   render() {
+    let enableSubmit = true;
+    if (this.state.title && this.state.body) {
+      enableSubmit = false;
+    }
 
     return (
       <div className="add-card-div" id="form-modal" style={{ display: this.props.show } }>
@@ -105,7 +126,7 @@ class AddCard extends Component {
           </div>
 
           <div className="form-input">
-            <input
+            <textarea
               type="text"
               className="body-input"
               placeholder="description"
@@ -147,11 +168,10 @@ class AddCard extends Component {
           </div>
           <br></br>
           <div className="form-submit">
-            <button className="edit-form-button" onClick={this.handleSubmit}>Submit</button>
+            <button className="edit-form-button" disabled={enableSubmit} onClick={this.handleSubmit}>Submit</button>
           </div>
-          <br></br>
           <div className="form-submit">
-            <button className="edit-form-button close-form-button" onClick={this.props.hide}>Close</button>
+            <button className="edit-form-button close-form-button" onClick={this.handleClose}>Close</button>
           </div>
         </form>
       </div>

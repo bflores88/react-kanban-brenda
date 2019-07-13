@@ -158,7 +158,6 @@ class EditCard extends Component {
               Submit
             </button>
           </div>
-          <br />
           <div className="form-submit">
             <button className="edit-form-button close-form-button" value={this.props.id} onClick={this.props.hideEdit}>
               Close
