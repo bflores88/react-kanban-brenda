@@ -1,0 +1,16 @@
+
+.status-column {
+  width: 33.3%;
+  border-right: 1px solid lightgrey;
+  height: 100%
+}
+
+.status-column:last-child {
+  border: none;
+}
+
+.status-title {
+  font-weight: 900;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

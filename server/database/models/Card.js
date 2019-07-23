@@ -2,14 +2,18 @@ const bookshelf = require('../bookshelf');
 
 class Card extends bookshelf.Model {
   get tableName() {
-    return 'priorities';
+    return 'cards';
   }
   get hasTimestamps() {
     return true;
   }
 
-  users() {
-    return this.belongsToMany('User', 'assigned_to', 'created_by');
+  created_by() {
+    return this.belongsTo('User', 'created_by');
+  }
+
+  assigned_to() {
+    return this.belongsTo('User', 'assigned_to');
   }
 
   priorities() {
