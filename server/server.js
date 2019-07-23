@@ -24,6 +24,8 @@ const PORT = process.env.EXPRESS_CONTAINER_PORT;
 
 const app = express();
 
+express.static(path.join(__dirname, 'public'));
+
 app.use(bodyParser.json());
 app.use(
   session({
